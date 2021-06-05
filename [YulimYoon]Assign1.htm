@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>MDIA 2294</title>
+	
+	<style>
+	    thead{
+	        font-weight:bold;
+	    }
+	    
+	    td{
+	        padding-left:5px;
+	        padding-right:5px;	        
+	    }
+	    
+	    td.subTot{
+	        text-align:right;	        
+	    }
+	</style>
+  
+	<script>
+      /*
+      Yulim Yoon
+      A01194461
+      Assignment1
+      */
+      
+		// Set discount percent global constant variable
+        const DISCOUNT_PERCENT = 0.1;
+		
+		// Set amount needed for discount
+        const MINIMUM_AMOUNT_FOR_DISCOUNT = 250;
+        
+		// Set the tax percentage
+		const TAX_PERCENT = 0.12;
+      
+	    function quickCalc() {
+          
+		  // Make variable for running sub total
+		  let runningTotal = 0; 
+          
+
+		  // - Line 1 -
+
+		  // Get the quantity for line 1
+          let line1Qty = document.getElementById("txtLine1Qty").value;
+
+		  // Get the price for line 1
+          let line1Price = document.getElementById("txtLine1Price").value;
+          
+		  // Calculate the total for line 1
+		  let line1Total = line1Qty * line1Price;
+
+		  // Set the total for line 1 on the page
+          document.getElementById("spnLine1").innerHTML = "$" + line1Total.toFixed(2);
+
+		  // Update the running total
+          runningTotal += line1Total;
+
+		  // put updated sub total in the console
+          console.log("Running total after line 1: " + runningTotal);
+          
+
+		  // - Line 2 - 
+
+
+		  // Get the quantity for line 2
+          let line2Qty = document.getElementById("txtLine2Qty").value;
+
+		  // Get the price for line 2
+          let line2Price = document.getElementById("txtLine2Price").value;
+
+		  // Calculate the total for line 2
+          let line2Total = line2Qty * line2Price;
+
+		  // Set the total for line 2 on the page
+          document.getElementById("spnLine2").innerHTML = "$" + line2Total.toFixed(2);
+
+		  // Update the running total
+          runningTotal += line2Total;
+
+		  // put updated sub total in the console
+          console.log("Running total after line 2: " + runningTotal);
+          
+
+		  // - Line 3 - 
+
+
+		  // Get the quantity for line 3
+          let line3Qty = document.getElementById("txtLine3Qty").value;
+
+		  // Get the price for line 3
+          let line3Price = document.getElementById("txtLine3Price").value;
+
+		  // Calculate the total for line 3
+          let line3Total = line3Qty * line3Price;
+
+		  // Set the total for line 3 on the page
+          document.getElementById("spnLine3").innerHTML = "$" + line3Total.toFixed(2);
+
+		  // Update the running total
+          runningTotal += line3Total;
+          
+		  // put updated sub total in the console
+		  console.log("Running total after line 3: " + runningTotal);
+          
+
+		  // - Line 4 - 
+
+
+		  // Get the quantity for line 4
+          let line4Qty = document.getElementById("txtLine4Qty").value;
+
+		  // Get the price for line 4
+          let line4Price = document.getElementById("txtLine4Price").value;
+
+		  // Get the total for line 4
+          let line4Total = line4Qty * line4Price;
+
+		  // Set the total for line 4 on the page
+          document.getElementById("spnLine4").innerHTML = "$" + line4Total.toFixed(2);
+
+		  // Update the running total
+          runningTotal += line4Total;
+
+		  // put updated sub total in the console
+          console.log("Running total after line 4: " + runningTotal);
+          
+
+		  // - Line 5 - 
+	
+
+		  // Get the quantity for line 5
+          let line5Qty = document.getElementById("txtLine5Qty").value;
+
+		  // Get the price for line 5
+          let line5Price = document.getElementById("txtLine5Price").value;
+
+		  // Calculate the total for line 5
+          let line5Total = line5Qty * line5Price;
+
+		  // Set the total for line 5 on the page
+          document.getElementById("spnLine5").innerHTML = "$" + line5Total.toFixed(2);
+
+		  // Update the running total
+          runningTotal += line5Total;
+
+		  // put updaed sub total in the console
+          console.log("Running total after line 5: " + runningTotal);
+    
+
+
+          // Now runningTotal includes all the line totals
+          
+          // Put the subtotal on the screen
+          document.getElementById("spnSubTotal").innerHTML = "$" + runningTotal.toFixed(2);
+          
+          
+          // Decide the discount
+          let discountAmount = (runningTotal >= MINIMUM_AMOUNT_FOR_DISCOUNT) ? (runningTotal * DISCOUNT_PERCENT) : 0;
+    
+		  // Put the discount on the screen
+          document.getElementById("spnDiscount").innerHTML = "$" + discountAmount.toFixed(2);
+                    
+          
+          // Caculate the tax (after discount)
+          let taxAmount = (runningTotal - discountAmount) * TAX_PERCENT;
+
+		  // Put the tax on the screen
+          document.getElementById("spnTax").innerHTML = "$" + taxAmount.toFixed(2);
+            
+          // Combine everything, runningTotal already includes the discount
+          let finalTotal = (runningTotal - discountAmount) + taxAmount;
+
+		  // Put the final total on the screen
+          document.getElementById("spnTotal").innerHTML = "$" + finalTotal.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+	<h1>MDIA 2294: ACME Corp Invoice</h1>
+	
+	<table>
+	    <thead>
+	        <tr>
+	            <td>ITEM</td>
+	            <td>DESCRIPTION</td>
+	            <td>QTY</td>
+	            <td>PRICE</td>
+	            <td>LINE TOTAL</td>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr>
+	            <td>1</td>
+	            <td><input id="txtLine1Desc" type="text" size="40" value="Anvil" /></td>
+	            <td><input id="txtLine1Qty" type="text" size="3" value="5" /></td>
+	            <td><input id="txtLine1Price" type="text" size="6" value="35.00" /></td>
+	            <td class="subTot"><span id="spnLine1"></span></td>
+	        </tr>
+	        <tr>
+	            <td>2</td>
+	            <td><input id="txtLine2Desc" type="text" size="40" value="Rocket Skates (each)" /></td>
+	            <td><input id="txtLine2Qty" type="text" size="3" value="2" /></td>
+	            <td><input id="txtLine2Price" type="text" size="6" value="24.99" /></td>
+	            <td class="subTot"><span id="spnLine2"></span></td>
+	        </tr>
+	        <tr>
+	            <td>3</td>
+	            <td><input id="txtLine3Desc" type="text" size="40" value="Giant Magnet" /></td>
+	            <td><input id="txtLine3Qty" type="text" size="3" value="1" /></td>
+	            <td><input id="txtLine3Price" type="text" size="6" value="125.50" /></td>
+	            <td class="subTot"><span id="spnLine3"></span></td>
+	        </tr>
+	        <tr>
+	            <td>4</td>
+	            <td><input id="txtLine4Desc" type="text" size="40" value="Ball bearings" /></td>
+	            <td><input id="txtLine4Qty" type="text" size="3" value="1000" /></td>
+	            <td><input id="txtLine4Price" type="text" size="6" value="0.25" /></td>
+	            <td class="subTot"><span id="spnLine4"></span></td>
+	        </tr>
+	        <tr>
+	            <td>5</td>
+	            <td><input id="txtLine5Desc" type="text" size="40" value="Portable holes" /></td>
+	            <td><input id="txtLine5Qty" type="text" size="3" value="12" /></td>
+	            <td><input id="txtLine5Price" type="text" size="6" value="15.25" /></td>
+	            <td class="subTot"><span id="spnLine5"></span></td>
+	        </tr>
+	    </tbody>
+	    <tfoot>
+	        <tr>
+	            <td colspan="4" style="text-align:right;">SUB TOTAL</td>  
+	            <td class="subTot"><span id="spnSubTotal"></span></td>	        
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align:right;">DISCOUNT</td>  
+	            <td class="subTot"><span id="spnDiscount"></span></td>	        
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align:right;">TAX</td>  
+	            <td class="subTot"><span id="spnTax"></span></td>	        
+	        </tr>
+	        <tr>
+	            <td colspan="4" style="text-align:right;">TOTAL</td>  
+	            <td class="subTot" style="border-top:solid black 1px"><span id="spnTotal"></span></td>	        
+	        </tr>
+	    </tfoot>	    
+	</table>
+	
+	<div><button id="cmdCalc" onclick="quickCalc()">Calculate</button></div>
+	<div>NOTE: discounts of 10% are given to orders over $250</div>
+
+</body>
+</html>
